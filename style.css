@@ -1,0 +1,19 @@
+.button-container{
+    padding-top: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
+    scale: 1.5;
+}
+
+.object{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.object > p{
+    scale: 1.25;
+}
