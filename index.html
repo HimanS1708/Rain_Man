@@ -28,9 +28,11 @@
         <button id="btn2" onclick=hideShow()>Rain</button>
         <button id="btn3" onclick=hideShow()>Path</button>
     </div>
-    <div class="object">
-        <p>Make n points on the canvas board, they will define the vertices of the object.</p>
-        <button id="obj-done">Done</button>
+    <div id="obj-para">
+        <p>Make n points on the canvas board, they will define the vertices of the object. Click to add points.</p>
+    </div>
+    <div id="obj-con" onclick="hideShow();plotPoints()">
+        <button>Done</button>
     </div>
     <script src="canvas.js"></script>
 </body>
