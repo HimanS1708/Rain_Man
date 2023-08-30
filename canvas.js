@@ -56,13 +56,14 @@ function draw() {
         canvas.addEventListener('click', (e) => {
             var x = e.clientX - origin.x - canvas.offsetLeft
             var y = e.clientY - origin.y - canvas.offsetTop
-            ctx.fillRect(x + origin.x, y + origin.y, 1, 1)
+            ctx.fillRect(x + origin.x, y + origin.y, 2, 2)
             points.push([x, y])
         })
     }
 }
 
 function plotPoints(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     var init_x = points[0][0]
     var init_y = points[0][1]
     for(let i=1;i<points.length;i++){
