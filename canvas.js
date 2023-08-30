@@ -46,6 +46,9 @@ function objShow(){
     obj_con.style.justifyContent = 'center'
     obj_para.style.scale = 1.25
     isDrawing = 1
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    points = []
+    console.log(points)
 }
 
 function draw() {
