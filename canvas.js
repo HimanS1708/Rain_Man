@@ -342,21 +342,23 @@ function path(){
     path_points = []
 }
 
-fetch("https://localhost:5000", {
-    method: "POST",
-    body: JSON.stringify({
-        points:points,
-        path_points:path_points,
-        v_x: rx,
-        v_y: ry,
-        intensity: density
-    }),
-    headers: {
-        "Content-type": "application/json; charset=UTF-8"
-    }
-})
-.then(response => response.json())
-.then(json => console.log(json));
+function submit(){
+    fetch("https://localhost:5000", {
+        method: "POST",
+        body: JSON.stringify({
+            points:points,
+            path_points:path_points,
+            v_x: rx,
+            v_y: ry,
+            intensity: density
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => response.json())
+    .then(json => console.log(json));
+}
 
 function random(min, max) {
     return Math.random() * (max - min) + min;
@@ -368,7 +370,7 @@ class Raindrop {
       this.y = random(0, canvas.height);
       this.speedy = ry;
       this.speedx = rx;
-      this.length = random(10, 30);
+      this.length = random(0, 1);
       this.thickness = random(0, 0.5);
     }
 
@@ -388,6 +390,7 @@ class Raindrop {
     }
 
     draw() {
+        // ctx.clearRect(0, 0, canvas.width, canvas.height)
         const costheta = ry/Math.sqrt(Math.pow(rx,2)+Math.pow(ry,2))
         const sintheta = rx/Math.sqrt(Math.pow(rx,2)+Math.pow(ry,2))
       ctx.beginPath();

@@ -1,7 +1,13 @@
 #button-container{
-    padding-top: 3%;
+    padding-top: 1%;
     display: flex;
     justify-content: space-around;
+}
+
+#submit-container{
+    padding-top: 1%;
+    display: flex;
+    justify-content: center;
 }
 
 button {
@@ -37,7 +43,7 @@ button:focus {
 }
 
 #button-container > button{
-    scale: 1.5;
+    scale: 1.1;
 }
 
 #obj-para{
