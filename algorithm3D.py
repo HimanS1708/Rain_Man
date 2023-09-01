@@ -229,57 +229,90 @@ def objective(params, path, poly, rain, intense):
     speed, theta, alpha = params
     return solve(path, poly, rain, intense, speed, theta,alpha)  # Negate to minimize
 
-# Define constant parameters
-n = int(input())
-
-# Initialize a list to store the test cases
-origin_poly=[]
-
-# Read input for each test case
-for _ in range(n):
-    a, b,c = map(float, input().split()) 
-    origin_poly.append(Point3D(a, b,c))  
-p=int(input())
-path=[]
-for _ in range(p):
-    a, b,c = map(float, input().split()) 
-    path.append(Point3D(a, b,c))  
-a, b,c = map(float, input().split()) 
-rain=Point3D(a,b,c)
-intense=float(input())
-
 initial_guess = [1.0, 90,90]  # Initial guess for speed and theta
 bounds = [(0.001, math.inf), (0.0, 360),(0.0,360)]  # Lower bounds for speed and theta
-# print(objective((97489595,90),path,poly,rain, intense))
-# print(objective((97489595,0),path,poly,rain, intense))
 
-result = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='Nelder-Mead', bounds=bounds)
-for alpha in range(1, 360,39):
-    initial_guess[2]=alpha
-    for theta in range(1, 360, 39):
-        initial_guess[1]=theta
-        res = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='L-BFGS-B', bounds=bounds)
-        if(res.fun<result.fun):
-            result=res
+def solution(arr1, arr2, rx, ry, rz, intense):
+    origin_poly = [Point3D(p.x, p.y, p.z) for p in arr1]
+    path = [Point3D(p.x, p.y, p.z) for p in arr2]
+    rain = Point3D(rx, ry, rz)
+    result = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='Nelder-Mead', bounds=bounds)
+    for alpha in range(1, 360,39):
+        initial_guess[2]=alpha
+        for theta in range(1, 360, 39):
+            initial_guess[1]=theta
+            res = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='L-BFGS-B', bounds=bounds)
+            if(res.fun<result.fun):
+                result=res
+    optimal_speed, optimal_theta, optimal_alpha = result.x
+    optimal_result = result.fun  # Negate back to get the actual result
+    sumx=0
+    sumy=0
+    sumz=0
+    for e in origin_poly:
+        sumx=sumx+e.x
+        sumy=sumy+e.y
+        sumz=sumz+e.z
+    sumx=sumx/len(origin_poly)
+    sumy=sumy/len(origin_poly)
+    sumz=sumz/len(origin_poly)
 
-optimal_speed, optimal_theta, optimal_alpha = result.x
-optimal_result = result.fun  # Negate back to get the actual result
-print(round(optimal_result,3))
-print(optimal_speed)
-print(optimal_theta)
-print(optimal_alpha)
-sumx=0
-sumy=0
-sumz=0
-for e in origin_poly:
-    sumx=sumx+e.x
-    sumy=sumy+e.y
-    sumz=sumz+e.z
-sumx=sumx/len(origin_poly)
-sumy=sumy/len(origin_poly)
-sumz=sumz/len(origin_poly)
+    poly_ans=rotate_around3D(origin_poly,optimal_theta,'x',Point3D(sumx,sumy,sumz))
+    poly_ans=rotate_around3D(poly_ans,optimal_alpha,'y',Point3D(sumx,sumy,sumz))
+    return [round(optimal_result, 4), round(optimal_speed, 4), round(optimal_theta, 4), round(optimal_alpha, 4), [[round(e.x, 4), round(e.y, 4), round(e.z, 4)] for e in poly_ans]]
 
-poly_ans=rotate_around3D(origin_poly,optimal_theta,'x',Point3D(sumx,sumy,sumz))
-poly_ans=rotate_around3D(poly_ans,optimal_alpha,'y',Point3D(sumx,sumy,sumz))
-for e in poly_ans:
-    print(round(e.x,4),round(e.y,4),round(e.z,4))
+if __name__ == "__main__":
+    # Define constant parameters
+    n = int(input())
+
+    # Initialize a list to store the test cases
+    origin_poly=[]
+
+    # Read input for each test case
+    for _ in range(n):
+        a, b,c = map(float, input().split()) 
+        origin_poly.append(Point3D(a, b,c))  
+    p=int(input())
+    path=[]
+    for _ in range(p):
+        a, b,c = map(float, input().split()) 
+        path.append(Point3D(a, b,c))  
+    a, b,c = map(float, input().split()) 
+    rain=Point3D(a,b,c)
+    intense=float(input())
+
+    initial_guess = [1.0, 90,90]  # Initial guess for speed and theta
+    bounds = [(0.001, math.inf), (0.0, 360),(0.0,360)]  # Lower bounds for speed and theta
+    # print(objective((97489595,90),path,poly,rain, intense))
+    # print(objective((97489595,0),path,poly,rain, intense))
+
+    result = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='Nelder-Mead', bounds=bounds)
+    for alpha in range(1, 360,39):
+        initial_guess[2]=alpha
+        for theta in range(1, 360, 39):
+            initial_guess[1]=theta
+            res = minimize(objective, initial_guess, args=(path, origin_poly, rain, intense), method='L-BFGS-B', bounds=bounds)
+            if(res.fun<result.fun):
+                result=res
+
+    optimal_speed, optimal_theta, optimal_alpha = result.x
+    optimal_result = result.fun  # Negate back to get the actual result
+    print(round(optimal_result,3))
+    print(optimal_speed)
+    print(optimal_theta)
+    print(optimal_alpha)
+    sumx=0
+    sumy=0
+    sumz=0
+    for e in origin_poly:
+        sumx=sumx+e.x
+        sumy=sumy+e.y
+        sumz=sumz+e.z
+    sumx=sumx/len(origin_poly)
+    sumy=sumy/len(origin_poly)
+    sumz=sumz/len(origin_poly)
+
+    poly_ans=rotate_around3D(origin_poly,optimal_theta,'x',Point3D(sumx,sumy,sumz))
+    poly_ans=rotate_around3D(poly_ans,optimal_alpha,'y',Point3D(sumx,sumy,sumz))
+    for e in poly_ans:
+        print(round(e.x,4),round(e.y,4),round(e.z,4))
