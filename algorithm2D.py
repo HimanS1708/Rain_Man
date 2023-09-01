@@ -140,9 +140,6 @@ def solution(arr1, arr2, vx, vy, intense):
         if(res.fun<result.fun):result=res
     optimal_speed, optimal_theta = result.x
     optimal_result = result.fun  # Negate back to get the actual result
-    print(optimal_result)
-    print(optimal_speed)
-    print(optimal_theta)
     sumx=0
     sumy=0
     for e in origin_poly:
