@@ -86,7 +86,6 @@ button:focus {
     justify-content: center;
     align-items: center;
     padding-left: 5%;
-    padding-top: 5%;
     width: 10%;
 }
 
@@ -131,43 +130,80 @@ button:focus {
 }
 
 #rain-con {
+    padding-top: 50%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    padding-left: 5%;
     display: none;
 }
 
-#rain{
+#rain-con > button{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    margin-bottom: 5%;
+}
+
+#vel{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 5%;
-    padding-top: 5%;
-    width: 10%;
+    left: 0;
 }
 
 #direction-input{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    padding-left: 5%;
+    width: 10%;
+    padding-bottom: 10%;
     display: none;
 }
 
+#RX{
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 50%;
+}
+
+#RY{
+    margin-left: 0;
+    width: 100%;
+}
+
 #direction-con{
-    display: flex;
-    justify-content: center;
     display: none;
+    padding-left: 8%;
+}
+
+#inten{
+    display: flex;
+    flex-direction: column;
+    left: 0;
 }
 
 #intensity-input{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    padding-left: 5%;
+    width: 10%;
+    padding-bottom: 10%;
     display: none;
 }
 
+#in{
+    margin-left: 0;
+    width: 100%;
+    margin-bottom: 50%;
+}
+
 #intensity-con{
-    display: flex;
-    justify-content: center;
     display: none;
+    padding-left: 8%;
+}
+
+#in {
+    height: 10px;
 }
 
 #path-para > p{
