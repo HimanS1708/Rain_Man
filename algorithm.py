@@ -151,7 +151,7 @@ def solution(arr1, arr2, vx, vy, intense):
     sumx=sumx/len(origin_poly)
     sumy=sumy/len(origin_poly)
 
-    poly_ans=rotate_around(origin_poly,theta,Point(sumx,sumy))
+    poly_ans=rotate_around(origin_poly,optimal_theta,Point(sumx,sumy))
     return [[e.x, e.y] for e in poly_ans]
 
 if __name__ == "__main__":
@@ -203,6 +203,6 @@ if __name__ == "__main__":
     sumx=sumx/len(origin_poly)
     sumy=sumy/len(origin_poly)
 
-    poly_ans=rotate_around(origin_poly,theta,Point(sumx,sumy))
+    poly_ans=rotate_around(origin_poly,optimal_theta,Point(sumx,sumy))
     for e in poly_ans:
         print(e.x,e.y)

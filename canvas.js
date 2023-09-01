@@ -348,12 +348,7 @@ function path(){
 }
 
 function submit(){
-    let points = [[100,100],[100,200],[200,200]]
-    let path_points = [[100,100],[400,400]]
-    let rx = 2
-    let ry = 3
-    let density = 20
-    fetch("https://localhost:8000", {
+    fetch("http://localhost:8000/", {
         method: "POST",
         body: JSON.stringify({
             "points":points,
@@ -363,8 +358,7 @@ function submit(){
             "intensity": density
         }),
         headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            "Origin": "https://127.0.0.1:8000"
+            "Content-type": "application/json; charset=UTF-8"
         }
     })
     .then(response => {console.log("Completed request");return response.json()})
