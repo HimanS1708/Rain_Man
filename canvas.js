@@ -155,7 +155,7 @@ function objShow(){
 add.addEventListener('click', (e) => {
     let x = parseInt(X_input.value, 10)
     let y = parseInt(Y_input.value, 10)
-    points.push([x, y])
+    points.push([x-origin.x, y-origin.y])
 })
 
 finish.addEventListener('click', (e) => {
@@ -171,7 +171,7 @@ finish.addEventListener('click', (e) => {
 path_add.addEventListener('click', (e) => {
     let x = parseInt(p_X_input.value, 10)
     let y = parseInt(p_Y_input.value, 10)
-    path_points.push([x, y])
+    path_points.push([x-origin.x, y-origin.y])
 })
 
 path_finish.addEventListener('click', (e) => {
@@ -334,7 +334,24 @@ function path(){
     path_points = []
 }
 
+fetch("https://localhost:5000", {
+    method: "POST",
+    body: JSON.stringify({
+        points:points,
+        path_points:path_points,
+        v_x: rx,
+        v_y: ry,
+        intensity: density
+    }),
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+.then(response => response.json())
+.then(json => console.log(json));
+
 function animate(){
+    console.log({points,path_points,rx,ry,density})
     draw()
     requestAnimationFrame(animate)
 }
