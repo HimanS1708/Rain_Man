@@ -45,6 +45,7 @@ function hideShow(){
         btn_con.style.display = 'none'
         display = 1
     }
+    console.log(points)
 }
 
 function hideShow_1(){
@@ -82,27 +83,25 @@ function objShow(){
     points = []
 }
 
+canvas.addEventListener('click', (e) => {
+	if (isDrawing === 1) {
+		let x = e.clientX - origin.x - canvas.offsetLeft
+		let y = e.clientY - origin.y - canvas.offsetTop
+		ctx.fillRect(x + origin.x, y + origin.y, 2, 2)
+		points.push([x, y])
+		console.log([x,y])
+	} else if(path_isDrawing === 1){
+		let x = e.clientX - origin.x - canvas.offsetLeft
+		let y = e.clientY - origin.y - canvas.offsetTop
+		ctx.fillRect(x + origin.x, y + origin.y, 2, 2)
+		path_points.push([x, y])
+		console.log([x,y])
+    }
+})
+
+
 function draw() {
-    if(isDrawing === 1){
-        canvas.addEventListener('click', (e) => {
-            if(isDrawing === 1){
-                var x = e.clientX - origin.x - canvas.offsetLeft
-                var y = e.clientY - origin.y - canvas.offsetTop
-                ctx.fillRect(x + origin.x, y + origin.y, 2, 2)
-                points.push([x, y])
-            }
-        })
-    }
-    else if(path_isDrawing === 1){
-        canvas.addEventListener('click', (e) => {
-            if(path_isDrawing === 1){
-                var x = e.clientX - origin.x - canvas.offsetLeft
-                var y = e.clientY - origin.y - canvas.offsetTop
-                ctx.fillRect(x + origin.x, y + origin.y, 2, 2)
-                path_points.push([x, y])
-            }
-        })
-    }
+	
 }
 
 function plotPoints(){
