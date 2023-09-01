@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
-from algorithm import solution
 from fastapi import FastAPI
+from algorithm2D import solution
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 
