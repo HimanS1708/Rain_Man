@@ -23,15 +23,21 @@
     <div class="canvas-container">
         <canvas id="canvas"></canvas>
     </div>
-    <div class="button-container">
+    <div id="button-container">
         <button id="btn1" onclick="hideShow();objShow()">Object</button>
         <button id="btn2" onclick=hideShow()>Rain</button>
-        <button id="btn3" onclick=hideShow()>Path</button>
+        <button id="btn3" onclick="hideShow_1();path()">Path</button>
     </div>
     <div id="obj-para">
         <p>Make n points on the canvas board, they will define the vertices of the object. Click to add points.</p>
     </div>
     <div id="obj-con" onclick="hideShow();plotPoints()">
+        <button>Done</button>
+    </div>
+    <div id="path-para">
+        <p>Enter end points of the line segments that define the path the object follows.</p>
+    </div>
+    <div id="path-con" onclick="hideShow_1();plotPoints_1()">
         <button>Done</button>
     </div>
     <script src="canvas.js"></script>

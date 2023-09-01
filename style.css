@@ -1,4 +1,4 @@
-.button-container{
+#button-container{
     padding-top: 3%;
     display: flex;
     justify-content: space-around;
@@ -36,7 +36,7 @@ button:focus {
   background-color: #4cb6eb;
 }
 
-.button-container > button{
+#button-container > button{
     scale: 1.5;
 }
 
@@ -52,10 +52,30 @@ button:focus {
     display: none;
 }
 
+#path-para{
+    display: grid;
+    justify-content: center;
+    display: none;
+}
+
+#path-con{
+    display: grid;
+    justify-content: center;
+    display: none;
+}
+
 #obj-para > p{
     scale: 1.25;
 }
 
 #obj-con > button{
+    scale: 1.25;
+}
+
+#path-para > p{
+    scale: 1.25;
+}
+
+#path-con > button{
     scale: 1.25;
 }
