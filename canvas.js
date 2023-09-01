@@ -9,6 +9,7 @@ const btn1 = document.getElementById('btn1')
 const btn2 = document.getElementById('btn2')
 const btn3 = document.getElementById('btn3')
 const btn_con = document.getElementById('button-container')
+const sub = document.getElementById('sub-btn')
 
 const obj_para = document.getElementById('obj-para')
 const obj_input = document.getElementById('obj-input')
@@ -64,6 +65,7 @@ function hideShow(){
         btn1.style.display = 'block'
         btn2.style.display = 'block'
         btn3.style.display = 'block'
+        sub.style.display = 'block'
         obj_para.style.display = 'none'
         obj_input.style.display = 'none'
         obj_con.style.display = 'none'
@@ -88,6 +90,7 @@ function hideShow(){
         btn1.style.display = 'none'
         btn2.style.display = 'none'
         btn3.style.display = 'none'
+        sub.style.display = 'none'
         btn_con.style.display = 'none'
         display = 1
         doAnim = 0
@@ -100,6 +103,7 @@ function hideShow_1(){
         btn1.style.display = 'block'
         btn2.style.display = 'block'
         btn3.style.display = 'block'
+        sub.style.display = 'block'
         obj_para.style.display = 'none'
         obj_input.style.display = 'none'
         obj_con.style.display = 'none'
@@ -125,6 +129,7 @@ function hideShow_1(){
         btn1.style.display = 'none'
         btn2.style.display = 'none'
         btn3.style.display = 'none'
+        sub.style.display = 'none'
         btn_con.style.display = 'none'
         display = 1
         doAnim = 0
