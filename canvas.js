@@ -351,18 +351,18 @@ function submit(){
     fetch("https://localhost:5000", {
         method: "POST",
         body: JSON.stringify({
-            points:points,
-            path_points:path_points,
-            v_x: rx,
-            v_y: ry,
-            intensity: density
+            "points":points,
+            "path_points":path_points,
+            "v_x": rx,
+            "v_y": ry,
+            "intensity": density
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-    .then(response => response.json())
-    .then(json => console.log(json));
+    .then(response => {console.log("Completed request");return response.json()})
+    .then(json => console.log(json)).catch(err => (console.log(err)));
 }
 
 function random(min, max) {
