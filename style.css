@@ -1,3 +1,7 @@
+#raindrop{
+    position: absolute;
+}
+
 #button-container{
     padding-top: 3%;
     display: flex;
@@ -46,6 +50,12 @@ button:focus {
     display: none;
 }
 
+#obj-input{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
 #obj-con{
     display: grid;
     justify-content: center;
@@ -53,6 +63,12 @@ button:focus {
 }
 
 #path-para{
+    display: grid;
+    justify-content: center;
+    display: none;
+}
+
+#path-input{
     display: grid;
     justify-content: center;
     display: none;
@@ -68,14 +84,59 @@ button:focus {
     scale: 1.25;
 }
 
+#obj-input > label,input{
+    margin-inline: 5rem;
+}
+
 #obj-con > button{
     scale: 1.25;
+}
+
+#obj-con > button{
+    margin-top: 1rem;
+    margin-right: 5rem;
+}
+
+#rain-con {
+    display: flex;
+    justify-content: space-around;
+    display: none;
+}
+
+#direction-input{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#direction-con{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#intensity-input{
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+#intensity-con{
+    display: flex;
+    justify-content: center;
+    display: none;
 }
 
 #path-para > p{
     scale: 1.25;
 }
 
+#path-input > label,input{
+    margin-inline: 5rem;
+}
+
 #path-con > button{
     scale: 1.25;
+    margin-top: 1rem;
+    margin-right: 5rem;
 }
