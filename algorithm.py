@@ -151,8 +151,8 @@ def solution(arr1, arr2, vx, vy, intense):
     sumx=sumx/len(origin_poly)
     sumy=sumy/len(origin_poly)
 
-    poly_ans=rotate_around(origin_poly,optimal_theta,Point(sumx,sumy))
-    return [[e.x, e.y] for e in poly_ans]
+    poly_ans=rotate_around(origin_poly,theta,Point(sumx,sumy))
+    return [round(optimal_result, 3), round(optimal_speed, 3), round(optimal_theta, 3), [[round(e.x, 3), round(e.y, 3)] for e in poly_ans]]
 
 if __name__ == "__main__":
     # Define constant parameters
