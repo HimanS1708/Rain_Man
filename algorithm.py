@@ -174,7 +174,7 @@ if __name__ == "__main__":
     rain=Point(a,b)
     intense=float(input())
     # path = pa  # Replace with your path data
-    poly = convex_hull(origin_poly) # Replace with your poly data
+    poly = origin_poly # Replace with your poly data
     # for e in poly:
     #     print(e.x,e.y)
     # rain = ...    # Replace with your rain value
