@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
 
 from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+
 from algorithm2D import solution as solution2D
 from algorithm3D import solution as solution3D
-from pydantic import BaseModel, Field
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
