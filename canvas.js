@@ -56,6 +56,7 @@ var x_c=0,y_c=0
 
 var rx=0,ry=0
 var density=0
+var raindrops = []
 
 function hideShow(){
     if(display === 1){
@@ -198,6 +199,7 @@ intensity.addEventListener('click', (e) => {
     intensity.style.display = 'none'
     direction.style.display = 'none'
     in_con.style.display = 'flex'
+    in_in.style.display = 'flex'
     in_input.style.display = 'flex'
     d_in.style.display = 'flex'
     in_input.style.paddingBottom = '1rem'
@@ -205,10 +207,16 @@ intensity.addEventListener('click', (e) => {
 
 d_in.addEventListener('click', (e) => {
     density=parseInt(in_in.value)
+    createRaindrops();
     hideShow()
 })
 
 d_rx.addEventListener('click', (e) => {
+    dir_input.style.display = 'block'
+    in_input.style.display = 'block'
+    direction.style.display = 'block'
+    direction_con.style.display = 'block'
+    in_in.style.display = 'block'
     rx=parseInt(RX.value)
     ry=parseInt(RY.value)
     hideShow()
@@ -350,10 +358,59 @@ fetch("https://localhost:5000", {
 .then(response => response.json())
 .then(json => console.log(json));
 
-function animate(){
-    console.log({points,path_points,rx,ry,density})
-    draw()
-    requestAnimationFrame(animate)
+function random(min, max) {
+    return Math.random() * (max - min) + min;
 }
 
+class Raindrop {
+    constructor() {
+      this.x = random(0, canvas.width);
+      this.y = random(0, canvas.height);
+      this.speedy = ry;
+      this.speedx = rx;
+      this.length = random(10, 30);
+      this.thickness = random(0, 0.5);
+    }
+
+    fall() {
+      this.y += this.speedy;
+      this.x += this.speedx;
+      if (this.y > canvas.height || this.x> canvas.width || this.x<0) {
+        if(random(0,1)>=(canvas.width/(canvas.width+canvas.height))){
+        this.x=0;    
+        this.y = random(0, canvas.height);
+        }
+        else{
+        this.x = random(0, canvas.width);
+        this.y=0;
+        }
+      }
+    }
+
+    draw() {
+        const costheta = ry/Math.sqrt(Math.pow(rx,2)+Math.pow(ry,2))
+        const sintheta = rx/Math.sqrt(Math.pow(rx,2)+Math.pow(ry,2))
+      ctx.beginPath();
+      ctx.strokeStyle = 'blue';
+      ctx.lineWidth = this.thickness;
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x+ (this.length*costheta), this.y + (this.length*sintheta));
+      ctx.stroke();
+    }
+}
+
+function createRaindrops() {
+    for (let i = 0; i < density; i++) {
+      raindrops.push(new Raindrop());
+    }
+}
+
+function animate(){
+    draw()
+    for(const raindrop of raindrops){
+        raindrop.fall();
+        raindrop.draw();
+    }
+    requestAnimationFrame(animate)
+}
 animate()
