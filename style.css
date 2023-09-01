@@ -1,7 +1,9 @@
 #button-container{
-    padding-top: 1%;
+    width: 10%;
     display: flex;
-    justify-content: space-around;
+    padding-left: 5%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #submit-container{
@@ -44,42 +46,69 @@ button:focus {
 
 #button-container > button{
     scale: 1.1;
+    margin-top: 50%;
+}
+
+#obj{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-top: 5%;
+    width: 10%;
 }
 
 #obj-para{
     display: grid;
     justify-content: center;
     display: none;
+    padding-bottom: 50%;
 }
 
 #obj-input{
     display: flex;
     justify-content: center;
     display: none;
+    padding-bottom: 50%;
 }
 
 #obj-con{
-    display: grid;
+    display: flex;
     justify-content: center;
+    padding-left: 50%;
     display: none;
+}
+
+#path{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-top: 5%;
+    width: 10%;
 }
 
 #path-para{
     display: grid;
     justify-content: center;
     display: none;
+    padding-bottom: 50%;
 }
 
 #path-input{
     display: grid;
     justify-content: center;
     display: none;
+    padding-bottom: 50%;
 }
 
 #path-con{
     display: grid;
     justify-content: center;
     display: none;
+    padding-left: 50%;
 }
 
 #obj-para > p{

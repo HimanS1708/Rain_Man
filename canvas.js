@@ -1,7 +1,7 @@
 const canvas = document.getElementById('canvas')
 
-canvas.width = window.innerWidth*0.95
-canvas.height = window.innerHeight*0.8
+canvas.width = window.innerWidth*0.8
+canvas.height = window.innerHeight
 
 const ctx = canvas.getContext('2d')
 
@@ -161,6 +161,8 @@ function objShow(){
 add.addEventListener('click', (e) => {
     let x = parseInt(X_input.value, 10)
     let y = parseInt(Y_input.value, 10)
+    X_input.value = ""
+    Y_input.value = ""
     points.push([x-origin.x, y-origin.y])
 })
 
@@ -177,6 +179,8 @@ finish.addEventListener('click', (e) => {
 path_add.addEventListener('click', (e) => {
     let x = parseInt(p_X_input.value, 10)
     let y = parseInt(p_Y_input.value, 10)
+    p_X_input.value = ""
+    p_Y_input.value = ""
     path_points.push([x-origin.x, y-origin.y])
 })
 

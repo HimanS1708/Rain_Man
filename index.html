@@ -11,6 +11,8 @@
             overflow: hidden;
         }
         canvas{
+            position: absolute;
+            right: 0;
             border: 1px solid black;
         }
         .canvas-container{
@@ -27,22 +29,23 @@
         <button id="btn1" onclick="hideShow();objShow()">Object</button>
         <button id="btn2" onclick="hideShow();rainShow()">Rain</button>
         <button id="btn3" onclick="hideShow_1();path()">Path</button>
-    </div>
-    <div id="submit-container">
         <button id="sub-btn" onclick="submit()">Submit</button>
     </div>
-    <div id="obj-para">
-        <p>Input the X and Y coordinates of the vertices of the object. (Enter at least 2 vertices)</p>
-    </div>
-    <div id="obj-input">
-        <label for="x">X-Coordinate</label>
-        <input type="text" id="X-input">
-        <label for="y">Y-Coordinate</label>
-        <input type="text" id="Y-input">
-    </div>
-    <div id="obj-con">
-        <button id="add">Add</button>
-        <button id="finish" onclick="hideShow();plotPoints()">Finish</button>
+    <div id="obj">
+        <div id="obj-para">
+            <p>Input the X and Y coordinates of the vertices of the object. (Enter at least 2 vertices) (Pressing the add button adds the point {x,y} to the vertices list)</p>
+
+        </div>
+        <div id="obj-input">
+            <label for="x">X-Coordinate</label>
+            <input type="text" id="X-input">
+            <label for="y">Y-Coordinate</label>
+            <input type="text" id="Y-input">
+        </div>
+        <div id="obj-con">
+            <button id="add">Add</button>
+            <button id="finish" onclick="hideShow();plotPoints()">Finish</button>
+        </div>
     </div>
     <div id="rain-con">
         <button id="direction">Velocity</button>
@@ -64,18 +67,20 @@
     <div id="intensity-con">
         <button id="d-in">Done</button>
     </div>
-    <div id="path-para">
-        <p>Enter the X and Y coordinates of the line segments forming the path</p>
-    </div>
-    <div id="path-input">
-        <label for="p_x">X-Coordinate</label>
-        <input type="text" id="p-X-input">
-        <label for="p_y">Y-Coordinate</label>
-        <input type="text" id="p-Y-input">
-    </div>
-    <div id="path-con">
-        <button id="p-add">Add</button>
-        <button id="p-finish" onclick="hideShow_1();plotPoints_1()">Finish</button>
+    <div id="path">
+        <div id="path-para">
+            <p>Enter the X and Y coordinates of the line segments forming the path</p>
+        </div>
+        <div id="path-input">
+            <label for="p_x">X-Coordinate</label>
+            <input type="text" id="p-X-input">
+            <label for="p_y">Y-Coordinate</label>
+            <input type="text" id="p-Y-input">
+        </div>
+        <div id="path-con">
+            <button id="p-add">Add</button>
+            <button id="p-finish" onclick="hideShow_1();plotPoints_1()">Finish</button>
+        </div>
     </div>
     <script src="canvas.js"></script>
 </body>
