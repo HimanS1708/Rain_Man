@@ -106,23 +106,31 @@ function draw() {
 }
 
 function plotPoints(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    var init_x = points[0][0]
-    var init_y = points[0][1]
-    for(let i=1;i<points.length;i++){
-        var cur_x = points[i][0]
-        var cur_y = points[i][1]
-        ctx.beginPath()
-        ctx.moveTo(init_x + origin.x, init_y + origin.y)
-        ctx.lineTo(cur_x + origin.x, cur_y + origin.y)
-        ctx.stroke()
-        init_x = cur_x
-        init_y = cur_y
+    if(points[0][0] == points[points.length-1][0] && points[0][1] == points[points.length-1][1]){
+        alert("Enter at least two points")
+        points = []
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        return;
     }
-    ctx.beginPath()
-    ctx.moveTo(points[points.length-1][0] + origin.x,points[points.length-1][1] + origin.y)
-    ctx.lineTo(points[0][0] + origin.x, points[0][1] + origin.y)
-    ctx.stroke()
+    else{
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        var init_x = points[0][0]
+        var init_y = points[0][1]
+        for(let i=1;i<points.length;i++){
+            var cur_x = points[i][0]
+            var cur_y = points[i][1]
+            ctx.beginPath()
+            ctx.moveTo(init_x + origin.x, init_y + origin.y)
+            ctx.lineTo(cur_x + origin.x, cur_y + origin.y)
+            ctx.stroke()
+            init_x = cur_x
+            init_y = cur_y
+        }
+        ctx.beginPath()
+        ctx.moveTo(points[points.length-1][0] + origin.x,points[points.length-1][1] + origin.y)
+        ctx.lineTo(points[0][0] + origin.x, points[0][1] + origin.y)
+        ctx.stroke()
+    }
 }
 
 function plotPoints_1(){
@@ -158,6 +166,8 @@ function plotPoints_1(){
     ctx.moveTo(points[points.length-1][0] + origin.x + dx,points[points.length-1][1] + origin.y + dy)
     ctx.lineTo(points[0][0] + origin.x + dx, points[0][1] + origin.y + dy)
     ctx.stroke()
+
+    // console.log(path_points)
 
     // var dir_x = 0
     // var dir_y = 0
