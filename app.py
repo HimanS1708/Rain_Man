@@ -29,7 +29,7 @@ async def process(env: Env):
     v_x = env.v_x
     v_y = env.v_y
     intensity = env.intensity
-    solved = solution(path_points, points, v_x, v_y, intensity)
+    solved = solution(points, path_points, v_x, v_y, intensity)
     return solved
 
 if __name__ == "__main__":
