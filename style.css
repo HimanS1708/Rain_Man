@@ -117,6 +117,8 @@ button:focus {
 
 #obj-input > label,input{
     margin-inline: 5rem;
+    line-height: 0.5rem;
+    padding-bottom: 2%;
 }
 
 #obj-con > button{
@@ -132,6 +134,16 @@ button:focus {
     display: flex;
     justify-content: space-around;
     display: none;
+}
+
+#rain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-top: 5%;
+    width: 10%;
 }
 
 #direction-input{
