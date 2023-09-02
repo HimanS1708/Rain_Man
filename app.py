@@ -17,7 +17,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-class Env(BaseModel):
+class Env2D(BaseModel):
+    points: list
+    path_points: list
+    v_x: float
+    v_y: float
+    intensity: float
+class Env3D(BaseModel):
     points: list
     path_points: list
     v_x: float
@@ -26,10 +32,10 @@ class Env(BaseModel):
     intensity: float
 
 @app.post("/")
-async def process2D(env: Env):
+async def process2D(env: Env2D):
     return solution2D(env.points, env.path_points, env.v_x, env.v_y, env.intensity)
 @app.post("/3D")
-async def process3D(env: Env):
+async def process3D(env: Env3D):
     return solution3D(env.points, env.path_points, env.v_x, env.v_y, env.v_z, env.v_z, env.intensity)
 
 if __name__ == "__main__":
