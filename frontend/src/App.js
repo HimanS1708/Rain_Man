@@ -211,7 +211,7 @@ function App() {
 		</div>
 		<Button onClick={() => {
 			//return:
-    		fetch("http://localhost:8000/", {
+    		fetch("http://localhost:8000/2D", {
         		method: "POST",
         		body: JSON.stringify({
 					"points":objPts,
