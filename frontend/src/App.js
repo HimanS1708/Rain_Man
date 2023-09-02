@@ -218,6 +218,7 @@ function App() {
 					"path_points":pathPts,
 					"v_x": rainParam.velX,
 					"v_y": rainParam.velY,
+					"v_z": 0,
 					"intensity": rainParam.density
         		}),
         		headers: {
