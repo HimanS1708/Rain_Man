@@ -31,7 +31,7 @@ class Env3D(BaseModel):
     v_z: float
     intensity: float
 
-@app.post("/2D")
+@app.post("/")
 async def process2D(env: Env2D):
     return solution2D(env.points, env.path_points, env.v_x, env.v_y, env.intensity)
 @app.post("/3D")
